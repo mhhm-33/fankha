@@ -1,0 +1,353 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>فهرس فنخا</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+:root{
+  --bg:#f6f3ec; --panel:#fffdf8; --ink:#1f1d1a; --muted:#6b6458; --line:#e2dccf;
+  --accent:#7a3e12; --accent2:#a0581f; --hl:#fff1b8; --chip:#efe8da; --ok:#2f6b3a;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#171513; --panel:#211e1b; --ink:#ece6da; --muted:#a39a8b; --line:#3a352f; --accent:#e0a36b; --accent2:#f0b985; --hl:#5a4a12; --chip:#2c2824; --ok:#7fc08b; color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#171513; --panel:#211e1b; --ink:#ece6da; --muted:#a39a8b; --line:#3a352f; --accent:#e0a36b; --accent2:#f0b985; --hl:#5a4a12; --chip:#2c2824; --ok:#7fc08b; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",Tahoma,"Noto Naskh Arabic",sans-serif;font-size:15px;line-height:1.7}
+header{background:var(--panel);border-bottom:1px solid var(--line);padding-block:12px 10px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));position:sticky;top:env(safe-area-inset-top, 0px);z-index:5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--panel)}
+h1{margin:0 0 8px;font-size:20px;color:var(--accent);font-weight:700}
+h1 small{color:var(--muted);font-weight:400;font-size:13px;margin-inline-start:8px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+input,select,button{font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:6px 9px}
+input[type=search]{flex:1 1 260px;min-width:0;font-size:16px;padding:8px 12px}
+button{cursor:pointer;background:var(--chip)}
+button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+button:hover{border-color:var(--accent2)}
+details.filters{margin-top:8px}
+details.filters summary{cursor:pointer;color:var(--accent);font-weight:600;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;margin-top:8px}
+.grid label{display:flex;flex-direction:column;font-size:12.5px;color:var(--muted);gap:2px}
+.grid label input,.grid label select{width:100%}
+.hint{font-size:12.5px;color:var(--muted)}
+main{max-width:1150px;margin:0 auto;padding-block:12px 60px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.tw{overflow-x:auto}
+.card{min-width:0}
+#status{margin:6px 0 10px;color:var(--muted);font-size:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-bottom:9px}
+.card .t{font-size:17px;font-weight:700;cursor:pointer;color:var(--ink)}
+.card .t:hover{color:var(--accent)}
+.meta{color:var(--muted);font-size:13.5px}
+.chip{display:inline-block;background:var(--chip);border-radius:20px;padding:0 9px;margin-inline-end:4px;font-size:12.5px}
+.auth{margin-top:2px}
+.tr{direction:ltr;unicode-bidi:isolate;font-size:12.5px;color:var(--muted);font-style:italic}
+a{color:var(--accent)}
+a.pdf{font-size:12.5px;text-decoration:none;border:1px solid var(--line);border-radius:6px;padding:0 6px;white-space:nowrap}
+a.pdf:hover{border-color:var(--accent)}
+.body{margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
+.desc{white-space:pre-wrap;font-size:14px;margin-bottom:8px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{border-bottom:1px solid var(--line);padding:4px 6px;text-align:right;vertical-align:top}
+th{color:var(--muted);font-weight:600;font-size:12.5px;background:var(--chip)}
+tr.match td{background:var(--hl)}
+td.num{direction:ltr;unicode-bidi:isolate;text-align:right;white-space:nowrap}
+tr.det td{font-size:13px;color:var(--muted);background:transparent;padding:2px 10px 8px}
+.more{cursor:pointer;color:var(--accent);font-size:12.5px;white-space:nowrap}
+.pager{display:flex;gap:6px;justify-content:center;align-items:center;margin:14px 0}
+.xref{background:var(--panel);border:1px dashed var(--line);border-radius:8px;padding:5px 12px;margin-bottom:6px;font-size:14px}
+mark{background:var(--hl);color:inherit;padding:0 1px;border-radius:3px}
+#loading{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:50;font-size:17px;gap:10px}
+.bar{width:260px;height:6px;background:var(--line);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;width:30%;background:var(--accent);animation:mv 1.2s infinite ease-in-out}
+@keyframes mv{0%{margin-inline-start:-30%}100%{margin-inline-start:100%}}
+.stats{display:flex;gap:18px;flex-wrap:wrap;margin:6px 0 2px}
+.stats b{color:var(--accent);font-size:18px}
+.sub0{color:var(--muted)}
+dialog{border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);max-width:640px}
+@media (max-width:700px){ header{position:static} h1{font-size:18px} h1 small{display:block;margin:0} table{font-size:12.5px} }
+.pg{font-size:12.5px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+</style>
+<div dir="rtl" lang="ar">
+<div id="loading"><div>جارٍ تحميل الفهرس…</div><div class="bar"><i></i></div><div class="hint">نحو 40 ميغابايت؛ يستحسن فتحه على شبكة واي فاي</div></div>
+
+<header>
+  <h1>فهرس فنخا الإلكتروني <small>فهرستگان نسخه‌های خطی ایران — المجلدات 1–34</small></h1>
+  <div class="row">
+    <select id="mode" title="مجال البحث">
+      <option value="all">في الكل</option>
+      <option value="title">العنوان</option>
+      <option value="author">المؤلف ومن معه</option>
+      <option value="katib">الناسخ (الكاتب)</option>
+      <option value="no">رقم النسخة</option>
+      <option value="desc">الوصف وتفاصيل النسخ (أبطأ)</option>
+    </select>
+    <input id="q" type="search" placeholder="اكتب عنواناً أو اسماً… (يمكن أكثر من كلمة)" autofocus>
+    <button class="primary" id="go">بحث</button>
+    <button id="reset" title="مسح كل شيء">مسح</button>
+    <button id="settings" title="ملاحظات على البيانات">ملاحظات</button>
+  </div>
+  <details class="filters" id="fbox">
+    <summary>تصفية متقدمة</summary>
+    <div class="grid">
+      <label>المجلد<select id="f_vol"><option value="">الكل</option></select></label>
+      <label>الموضوع<input id="f_subj" list="dl_subj" placeholder="مثل: فقه"></label>
+      <label>اللغة<select id="f_lang"><option value="">الكل</option></select></label>
+      <label>المدينة (موضع النسخة)<select id="f_city"><option value="">الكل</option></select></label>
+      <label>المكتبة<select id="f_lib"><option value="">الكل</option></select></label>
+      <label>الخط<input id="f_khatt" list="dl_khatt" placeholder="مثل: نسخ"></label>
+      <label>تاريخ النسخ: من القرن<input id="f_q1" type="number" min="1" max="15" placeholder="هـ"></label>
+      <label>إلى القرن<input id="f_q2" type="number" min="1" max="15" placeholder="هـ"></label>
+      <label>الترتيب<select id="f_sort">
+        <option value="vol">بحسب المجلد والصفحة</option>
+        <option value="title">ألفبائي بالعنوان</option>
+        <option value="copies">الأكثر نسخاً</option>
+      </select></label>
+      <label>عرض النسخ<select id="f_only">
+        <option value="1">المطابقة لشروط النسخ فقط</option>
+        <option value="0">كل نسخ المدخل</option>
+      </select></label>
+    </div>
+    <div class="hint" style="margin-top:6px">شروط المدينة والمكتبة والخط والقرن والناسخ ورقم النسخة تنطبق على النسخ: يظهر المدخل إذا وُجدت فيه نسخة واحدة تستوفيها جميعاً.</div>
+  </details>
+  <datalist id="dl_subj"></datalist><datalist id="dl_khatt"></datalist>
+</header>
+
+<main>
+  <div id="status"></div>
+  <div id="xrefs"></div>
+  <div id="results"></div>
+  <div class="pager" id="pager"></div>
+</main>
+
+<dialog id="dlg">
+  <h4>ملاحظات على البيانات</h4>
+  <ul class="hint" style="font-size:13.5px">
+    <li>استُخرجت الحقول آلياً من طبقة النص في الـPDF؛ والمرجع عند الشك هو صفحة الكتاب المذكورة بجانب كل مدخل ونسخة (المجلد والصفحة المطبوعة).</li>
+    <li>رقم تسلسل النسخة محسوب من ترتيبها في المدخل، لأن أرقام التسلسل المطبوعة لا تُقرأ من الملف. والنسخ غير المرقّمة في المطبوع (مثل «همان نسخه بالا») تظهر بعلامة «↳».</li>
+    <li>ترتيب أجزاء سنوات الوفاة قد يأتي مقلوباً في سطر المؤلف (مثل «۸۳۹ - ،؟ قمري») بسبب اختلاط اتجاه الكتابة في الملف.</li>
+    <li>المجلدات 35–45 (النمايه) لم تدخل القاعدة لأنها مأخوذة من مداخل المجلدات 1–34.</li>
+  </ul>
+  <div class="row" style="justify-content:flex-end"><button id="dlg_ok" class="primary">إغلاق</button></div>
+</dialog>
+
+<script>document.documentElement.dir="rtl";document.documentElement.lang="ar";</script>
+<script src="data/c0.js"></script>
+<script src="data/e1.js"></script>
+<script src="data/e2.js"></script>
+<script src="data/c1.js"></script>
+<script src="data/c2.js"></script>
+<script src="data/c3.js"></script>
+
+<script>
+"use strict";
+const K = window.FK_CORE;
+const L = K.L, E = K.E, C = K.C, X = K.X;
+// E: [vol,page,pdf,title,subj,lang,title_tr,author,author_tr,roles,cStart,cCount]
+// C: [entry,n,city,lib,no,khatt,katib,tarikh,qarn,page,pdf]
+const $ = id => document.getElementById(id);
+const PER = 50;
+let pdfPath = '../فنخا-compressed.pdf';
+try { const s = localStorage.getItem('fk_pdf'); if (s) pdfPath = s; } catch(e){}
+
+// ---------- normalisation (spaces removed so glued/split words still match)
+const MAPS = [[/[يىیئ]/g,'ي'],[/[كک]/g,'ك'],[/[ةۀ]/g,'ه'],[/[أإآٱ]/g,'ا'],[/ؤ/g,'و'],
+  [/[\u064B-\u065F\u0670\u0640\u200c\u200d\u200e\u200f]/g,''],[/[\s\-_.,،؛:()\[\]«»"'‘’ʿʾ=\/*]/g,'']];
+const DIG = {'۰':0,'۱':1,'۲':2,'۳':3,'۴':4,'۵':5,'۶':6,'۷':7,'۸':8,'۹':9,'٠':0,'١':1,'٢':2,'٣':3,'٤':4,'٥':5,'٦':6,'٧':7,'٨':8,'٩':9};
+function norm(s){
+  if(!s) return '';
+  s = s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[۰-۹٠-٩]/g, d=>DIG[d]);
+  for (const [r,t] of MAPS) s = s.replace(r,t);
+  return s;
+}
+function esc(s){return (s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+
+// ---------- precompute keys
+let kTitle, kAuth, kAll, kKatib, kNo, kSubj, kKhatt, kXfrom;
+function prep(){
+  const n=E.length; kTitle=new Array(n); kAuth=new Array(n); kAll=new Array(n);
+  kSubj=L.subj.map(norm); kKhatt=L.khatt.map(norm);
+  for(let i=0;i<n;i++){const e=E[i];
+    kTitle[i]=norm(e[3])+'|'+norm(e[6]);
+    kAuth[i]=norm(e[7])+'|'+norm(e[8])+'|'+norm(e[9]);
+    kAll[i]=kTitle[i]+'|'+kAuth[i]+'|'+kSubj[e[4]];
+  }
+  kKatib=new Array(C.length); kNo=new Array(C.length);
+  for(let j=0;j<C.length;j++){kKatib[j]=norm(C[j][6]); kNo[j]=norm(C[j][4]);}
+  kXfrom=X.map(x=>norm(x[3]));
+}
+
+// ---------- filter widgets
+function fillSelects(){
+  const vs=$('f_vol'); for(let v=1;v<=34;v++){const o=document.createElement('option');o.value=v;o.textContent='المجلد '+v;vs.appendChild(o);}
+  const cnt=(arr,col)=>{const c=new Map();for(const r of arr)c.set(r[col],(c.get(r[col])||0)+1);return c;};
+  const langC=cnt(E,5), cityC=cnt(C,2), libC=cnt(C,3), subjC=cnt(E,4), khC=cnt(C,5);
+  const add=(sel,list,counts,min)=>{[...counts.entries()].filter(([i,c])=>list[i]&&c>=min).sort((a,b)=>b[1]-a[1]).forEach(([i,c])=>{const o=document.createElement('option');o.value=i;o.textContent=list[i]+' ('+c.toLocaleString('ar')+')';sel.appendChild(o);});};
+  add($('f_lang'),L.lang,langC,3); add($('f_city'),L.city,cityC,1);
+  window._libC=libC; refillLib();
+  const dl=(id,list,counts)=>{const d=$(id);[...counts.entries()].filter(([i,c])=>list[i]&&c>=5).sort((a,b)=>b[1]-a[1]).slice(0,400).forEach(([i])=>{const o=document.createElement('option');o.value=list[i];d.appendChild(o);});};
+  dl('dl_subj',L.subj,subjC); dl('dl_khatt',L.khatt,khC);
+}
+function refillLib(){
+  const sel=$('f_lib'), city=$('f_city').value; const keep=sel.value;
+  sel.innerHTML='<option value="">الكل</option>';
+  let counts=window._libC;
+  if(city!==''){counts=new Map(); for(const r of C) if(r[2]==city) counts.set(r[3],(counts.get(r[3])||0)+1);}
+  [...counts.entries()].filter(([i])=>L.lib[i]).sort((a,b)=>b[1]-a[1]).forEach(([i,c])=>{const o=document.createElement('option');o.value=i;o.textContent=L.lib[i]+' ('+c.toLocaleString('ar')+')';sel.appendChild(o);});
+  if([...sel.options].some(o=>o.value===keep)) sel.value=keep;
+}
+
+// ---------- detail (descriptions) lazy loading
+const DET={}; const waiting={};
+window.FK_DET_LOAD=function(v,obj){DET[v]=obj; (waiting[v]||[]).forEach(f=>f()); delete waiting[v];};
+function loadVol(v){return new Promise(res=>{ if(DET[v]) return res();
+  (waiting[v]=waiting[v]||[]).push(res);
+  if(waiting[v].length>1) return;
+  const s=document.createElement('script'); s.src='data/v'+String(v).padStart(2,'0')+'.js';
+  s.onerror=()=>window.FK_DET_LOAD(v,{d:{},c:{}}); document.body.appendChild(s);});}
+let descKeys=null;
+async function ensureAllDesc(){
+  if(descKeys) return;
+  for(let v=1;v<=34;v++){ status('جارٍ تحميل الأوصاف: المجلد '+v+' من 34…'); await loadVol(v); }
+  descKeys={d:new Map(), c:new Map()};
+  for(let v=1;v<=34;v++){const o=DET[v]; for(const k in o.d) descKeys.d.set(+k,norm(o.d[k])); for(const k in o.c) descKeys.c.set(+k,norm(o.c[k]));}
+}
+
+// ---------- search
+let RES=[], RESX=[], page=0, lastTokens=[], copyMatch=null;
+function status(t){$('status').innerHTML=t;}
+function tokens(q){return q.trim().split(/\s+/).map(norm).filter(Boolean);}
+async function run(){
+  const mode=$('mode').value, toks=tokens($('q').value);
+  // phrase in quotes => keep as one token (spaces are ignored anyway)
+  lastTokens=toks;
+  const fv=$('f_vol').value, fl=$('f_lang').value, fs=norm($('f_subj').value);
+  const fc=$('f_city').value, fb=$('f_lib').value, fk=norm($('f_khatt').value);
+  const q1=+$('f_q1').value||0, q2=+$('f_q2').value||0;
+  if(mode==='desc' && toks.length) await ensureAllDesc();
+  const copyLevel = fc!==''||fb!==''||fk||q1||q2||(toks.length&&(mode==='katib'||mode==='no'));
+  const has=(key)=>toks.every(t=>key.includes(t));
+  const okCopy=(j)=>{const r=C[j];
+    if(fc!==''&&r[2]!=fc) return false; if(fb!==''&&r[3]!=fb) return false;
+    if(fk&&!kKhatt[r[5]].includes(fk)) return false;
+    if(q1&&(!r[8]||r[8]<q1)) return false; if(q2&&(!r[8]||r[8]>q2)) return false;
+    if(toks.length&&mode==='katib'&&!has(kKatib[j])) return false;
+    if(toks.length&&mode==='no'&&!has(kNo[j])) return false;
+    return true;};
+  RES=[]; copyMatch=copyLevel?new Set():null;
+  for(let i=0;i<E.length;i++){const e=E[i];
+    if(fv&&e[0]!=fv) continue; if(fl!==''&&e[5]!=fl) continue;
+    if(fs&&!kSubj[e[4]].includes(fs)) continue;
+    if(toks.length){
+      if(mode==='all'&&!has(kAll[i])) continue;
+      if(mode==='title'&&!has(kTitle[i])) continue;
+      if(mode==='author'&&!has(kAuth[i])) continue;
+      if(mode==='desc'){
+        let ok=has(kAll[i]+'|'+(descKeys.d.get(i)||''));
+        if(!ok){for(let j=e[10];j<e[10]+e[11];j++){if(has(descKeys.c.get(j)||'')){ok=true;break;}}}
+        if(!ok) continue;
+      }
+    }
+    if(copyLevel){let any=false; for(let j=e[10];j<e[10]+e[11];j++){ if(okCopy(j)){any=true;copyMatch.add(j);} } if(!any) continue;}
+    RES.push(i);
+  }
+  const srt=$('f_sort').value;
+  if(srt==='title') RES.sort((a,b)=>E[a][3].localeCompare(E[b][3],'fa'));
+  else if(srt==='copies') RES.sort((a,b)=>E[b][11]-E[a][11]);
+  RESX=[];
+  if(toks.length&&(mode==='all'||mode==='title')&&!fv&&fl===''&&!fs&&!copyLevel){
+    for(let k=0;k<X.length;k++) if(has(kXfrom[k])) RESX.push(k);
+  }
+  page=0; render();
+  const nCopies = copyMatch? copyMatch.size : RES.reduce((s,i)=>s+E[i][11],0);
+  status(`<b>${RES.length.toLocaleString('ar')}</b> مدخلاً، فيها <b>${nCopies.toLocaleString('ar')}</b> نسخة`+(copyMatch?' مطابقة':'')+(RESX.length?` — و${RESX.length.toLocaleString('ar')} إحالة`:''));
+}
+
+function hl(s){ if(!s) return ''; let h=esc(s);
+  return h; }
+function pdfLink(p,label){return label?`<span class="pg">${label}</span>`:'';}
+
+function render(){
+  const R=$('results'); R.innerHTML='';
+  const xr=$('xrefs'); xr.innerHTML='';
+  if(page===0) RESX.slice(0,30).forEach(k=>{const x=X[k];
+    const d=document.createElement('div'); d.className='xref';
+    d.innerHTML=`«${esc(x[3])}» ← انظر: <a href="#" data-go="${esc(x[4])}">${esc(x[4])}</a> <span class="meta">ج ${x[0]}، ص ${x[1]}</span>`;
+    xr.appendChild(d);});
+  const from=page*PER, list=RES.slice(from,from+PER);
+  for(const i of list) R.appendChild(card(i));
+  const P=$('pager'); P.innerHTML='';
+  const pages=Math.ceil(RES.length/PER);
+  if(pages>1){
+    const b=(t,p,dis)=>{const x=document.createElement('button');x.textContent=t;x.disabled=dis;x.onclick=()=>{page=p;render();window.scrollTo(0,0);};P.appendChild(x);};
+    b('« الأولى',0,page===0); b('‹ السابقة',page-1,page===0);
+    const s=document.createElement('span'); s.textContent=` صفحة ${page+1} من ${pages} `; P.appendChild(s);
+    b('التالية ›',page+1,page>=pages-1); b('الأخيرة »',pages-1,page>=pages-1);
+  }
+}
+
+function card(i){
+  const e=E[i]; const d=document.createElement('div'); d.className='card';
+  const subj=L.subj[e[4]], lang=L.lang[e[5]];
+  const nMatch = copyMatch? countMatch(i):0;
+  d.innerHTML=`<div class="row" style="justify-content:space-between;align-items:baseline">
+    <span class="t">${esc(e[3])||'<span class=sub0>(بلا عنوان)</span>'}</span>
+    <span>${pdfLink(e[2],'ج '+e[0]+'، ص '+e[1])}</span></div>
+    <div class="meta">${subj?`<span class="chip">${esc(subj)}</span>`:''}${lang?`<span class="chip">${esc(lang)}</span>`:''}
+      <span class="chip">${e[11]} نسخة${copyMatch?` · ${nMatch} مطابقة`:''}</span>
+      ${e[6]?`<span class="tr">${esc(e[6])}</span>`:''}</div>
+    ${e[7]?`<div class="auth">${esc(e[7])} ${e[8]?`<span class="tr">${esc(e[8])}</span>`:''}</div>`:''}
+    ${e[9]?`<div class="meta">${esc(e[9])}</div>`:''}
+    <div class="body" hidden></div>`;
+  const body=d.querySelector('.body');
+  d.querySelector('.t').onclick=()=>toggle(i,body);
+  return d;
+}
+function countMatch(i){const e=E[i];let n=0;for(let j=e[10];j<e[10]+e[11];j++) if(copyMatch.has(j)) n++;return n;}
+
+async function toggle(i,body){
+  if(!body.hidden){body.hidden=true;return;}
+  body.hidden=false; body.innerHTML='<span class="hint">جارٍ تحميل التفاصيل…</span>';
+  const e=E[i]; await loadVol(e[0]); const dv=DET[e[0]];
+  const desc=dv.d[i]||'';
+  const only = copyMatch && $('f_only').value==='1';
+  let rows='';
+  for(let j=e[10];j<e[10]+e[11];j++){
+    if(only&&!copyMatch.has(j)) continue;
+    const c=C[j], m=copyMatch&&copyMatch.has(j);
+    rows+=`<tr class="${m?'match':''}"><td>${c[1]||'↳'}</td><td>${esc(L.city[c[2]])}</td><td>${esc(L.lib[c[3]])}</td><td class="num">${esc(c[4])}</td><td>${esc(L.khatt[c[5]])}</td><td>${esc(c[6])}</td><td>${esc(c[7])}</td><td>${pdfLink(c[10],'ص '+c[9])}</td><td>${dv.c[j]?`<span class="more" data-j="${j}">تفاصيل</span>`:''}</td></tr>`;
+  }
+  body.innerHTML=(desc?`<div class="desc">${esc(desc)}</div>`:'')+
+    `<div class="tw"><table><thead><tr><th>#</th><th>المدينة</th><th>المكتبة</th><th>رقم النسخة</th><th>الخط</th><th>الناسخ</th><th>التاريخ</th><th>الصفحة</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`+
+    (only&&e[11]>countMatch(i)?`<div class="hint">عُرضت النسخ المطابقة فقط (${countMatch(i)} من ${e[11]}). غيّر «عرض النسخ» في التصفية لرؤيتها كلها.</div>`:'');
+  body.querySelectorAll('.more').forEach(s=>s.onclick=()=>{
+    const tr=s.closest('tr'); const nx=tr.nextElementSibling;
+    if(nx&&nx.classList.contains('det')){nx.remove();return;}
+    const r=document.createElement('tr'); r.className='det'; r.innerHTML=`<td></td><td colspan="8">${esc(dv.c[+s.dataset.j])}</td>`; tr.after(r);});
+}
+
+// ---------- wiring
+let tmr=null;
+function later(){clearTimeout(tmr); tmr=setTimeout(()=>{ if($('mode').value!=='desc') run(); },300);}
+function init(){
+  prep(); fillSelects();
+  $('q').addEventListener('input',later);
+  $('q').addEventListener('keydown',ev=>{if(ev.key==='Enter'){clearTimeout(tmr);run();}});
+  $('go').onclick=run;
+  ['mode','f_vol','f_lang','f_lib','f_sort','f_only','f_q1','f_q2'].forEach(id=>$(id).addEventListener('change',()=>{ if(id!=='mode'||$('q').value) run();}));
+  $('f_city').addEventListener('change',()=>{refillLib();run();});
+  ['f_subj','f_khatt'].forEach(id=>$(id).addEventListener('change',run));
+  $('reset').onclick=()=>{$('q').value='';document.querySelectorAll('.grid input').forEach(x=>x.value='');document.querySelectorAll('.grid select').forEach(x=>x.selectedIndex=0);refillLib();$('mode').value='all';welcome();};
+  $('settings').onclick=()=>$('dlg').showModal();
+  $('dlg_ok').onclick=()=>$('dlg').close();
+  document.addEventListener('click',ev=>{const a=ev.target.closest('[data-go]'); if(a){ev.preventDefault();$('q').value=a.dataset.go;$('mode').value='title';run();}});
+  $('loading').remove(); welcome();
+}
+function welcome(){
+  RES=[];RESX=[];copyMatch=null;$('results').innerHTML='';$('xrefs').innerHTML='';$('pager').innerHTML='';
+  const nC=C.length;
+  status(`<div class="stats"><span><b>${E.length.toLocaleString('ar')}</b> مدخلاً (عنواناً)</span><span><b>${nC.toLocaleString('ar')}</b> نسخة</span><span><b>${X.length.toLocaleString('ar')}</b> إحالة</span><span><b>34</b> مجلداً</span></div>
+  <div class="hint">ابدأ بكتابة عنوان أو اسم مؤلف. اضغط على عنوان المدخل لعرض وصفه ونسخه، وبجانبه رقم المجلد والصفحة في المطبوع. لا فرق في البحث بين ي/ی ولا ك/ک ولا ة/ه، ولا بين الكلمات الملتصقة والمنفصلة.</div>`);
+}
+init();
+</script>
+</div>
+
+</body></html>
