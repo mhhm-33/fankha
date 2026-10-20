@@ -1,6 +1,9 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>فهرس فنخا</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <style>
 :root{
   --bg:#f6f3ec; --panel:#fffdf8; --ink:#1f1d1a; --muted:#6b6458; --line:#e2dccf;
@@ -11,6 +14,8 @@
 }
 :root[data-theme="dark"]{--bg:#171513; --panel:#211e1b; --ink:#ece6da; --muted:#a39a8b; --line:#3a352f; --accent:#e0a36b; --accent2:#f0b985; --hl:#5a4a12; --chip:#2c2824; --ok:#7fc08b; color-scheme:dark}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",Tahoma,"Noto Naskh Arabic",sans-serif;font-size:15px;line-height:1.7}
 header{background:var(--panel);border-bottom:1px solid var(--line);padding-block:12px 10px;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));position:sticky;top:env(safe-area-inset-top, 0px);z-index:5}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--panel)}
@@ -64,13 +69,39 @@ mark{background:var(--hl);color:inherit;padding:0 1px;border-radius:3px}
 dialog{border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--ink);max-width:640px}
 @media (max-width:700px){ header{position:static} h1{font-size:18px} h1 small{display:block;margin:0} table{font-size:12.5px} }
 .pg{font-size:12.5px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.tabs{display:flex;gap:4px;margin:0 0 8px}
+.tabs button{border-radius:20px;padding:4px 16px;background:transparent}
+.tabs button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.ixh{background:var(--panel);border:1px solid var(--line);border-radius:9px;padding:7px 12px;margin-bottom:6px}
+.ixh .hn{font-weight:700;cursor:pointer}
+.ixh .hn:hover{color:var(--accent)}
+.ixit{padding:3px 0;border-bottom:1px dotted var(--line);font-size:14px}
+.ixit:last-child{border-bottom:0}
+.ref{display:inline-block;font-size:12px;border:1px solid var(--line);border-radius:6px;padding:0 6px;margin:1px 3px;cursor:pointer;white-space:nowrap;font-variant-numeric:tabular-nums}
+.ref.lk{border-color:var(--accent2);color:var(--accent)}
+.ref:hover{background:var(--chip)}
+.back{margin-bottom:8px}
+#ixbar select,#ixbar input{min-width:0;max-width:100%}
+#ix_sel{flex:1 1 220px}
+#ix_q{flex:2 1 220px}
+.ixit{overflow-wrap:anywhere}
 </style>
-<div dir="rtl" lang="ar">
+</head>
+<body>
 <div id="loading"><div>جارٍ تحميل الفهرس…</div><div class="bar"><i></i></div><div class="hint">نحو 40 ميغابايت؛ يستحسن فتحه على شبكة واي فاي</div></div>
 
 <header>
   <h1>فهرس فنخا الإلكتروني <small>فهرستگان نسخه‌های خطی ایران — المجلدات 1–34</small></h1>
-  <div class="row">
+  <div class="tabs"><button id="tab_e" class="on">المداخل</button><button id="tab_i">الفهارس (ج 35–45)</button></div>
+  <div class="row" id="ixbar" hidden>
+    <select id="ix_sel" title="الفهرس"></select>
+    <input id="ix_q" type="search" placeholder="ابحث في هذا الفهرس…">
+    <select id="ix_mode" title="مجال البحث في الفهرس">
+      <option value="h">في رؤوس الفهرس</option>
+      <option value="a">في الرؤوس والبنود</option>
+    </select>
+  </div>
+  <div class="row" id="ebar">
     <select id="mode" title="مجال البحث">
       <option value="all">في الكل</option>
       <option value="title">العنوان</option>
@@ -82,6 +113,7 @@ dialog{border:1px solid var(--line);border-radius:10px;background:var(--panel);c
     <input id="q" type="search" placeholder="اكتب عنواناً أو اسماً… (يمكن أكثر من كلمة)" autofocus>
     <button class="primary" id="go">بحث</button>
     <button id="reset" title="مسح كل شيء">مسح</button>
+    <button id="csv" title="حفظ النتائج الحالية جدولاً">تصدير CSV</button>
     <button id="settings" title="ملاحظات على البيانات">ملاحظات</button>
   </div>
   <details class="filters" id="fbox">
@@ -111,10 +143,17 @@ dialog{border:1px solid var(--line);border-radius:10px;background:var(--panel);c
 </header>
 
 <main>
+  <div id="epanel">
   <div id="status"></div>
   <div id="xrefs"></div>
   <div id="results"></div>
   <div class="pager" id="pager"></div>
+  </div>
+  <div id="ixpanel" hidden>
+  <div id="ix_status" class="hint"></div>
+  <div id="ix_res"></div>
+  <div class="pager" id="ix_pager"></div>
+  </div>
 </main>
 
 <dialog id="dlg">
@@ -129,12 +168,12 @@ dialog{border:1px solid var(--line);border-radius:10px;background:var(--panel);c
 </dialog>
 
 <script>document.documentElement.dir="rtl";document.documentElement.lang="ar";</script>
-<script src="data/c0.js"></script>
-<script src="data/e1.js"></script>
-<script src="data/e2.js"></script>
-<script src="data/c1.js"></script>
-<script src="data/c2.js"></script>
-<script src="data/c3.js"></script>
+<script src="data/c0.js" charset="utf-8"></script>
+<script src="data/e1.js" charset="utf-8"></script>
+<script src="data/e2.js" charset="utf-8"></script>
+<script src="data/c1.js" charset="utf-8"></script>
+<script src="data/c2.js" charset="utf-8"></script>
+<script src="data/c3.js" charset="utf-8"></script>
 
 <script>
 "use strict";
@@ -323,6 +362,20 @@ async function toggle(i,body){
     const r=document.createElement('tr'); r.className='det'; r.innerHTML=`<td></td><td colspan="8">${esc(dv.c[+s.dataset.j])}</td>`; tr.after(r);});
 }
 
+// ---------- CSV
+function csv(){
+  if(!RES.length){alert('لا نتائج لتصديرها');return;}
+  const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
+  const lines=[['المجلد','الصفحة','صفحة PDF','العنوان','الموضوع','اللغة','المؤلف','تسلسل النسخة','المدينة','المكتبة','رقم النسخة','الخط','الناسخ','التاريخ','صفحة النسخة'].map(q).join(',')];
+  for(const i of RES){const e=E[i];
+    for(let j=e[10];j<e[10]+e[11];j++){ if(copyMatch&&!copyMatch.has(j)) continue; const c=C[j];
+      lines.push([e[0],e[1],e[2],e[3],L.subj[e[4]],L.lang[e[5]],e[7],c[1]||'',L.city[c[2]],L.lib[c[3]],c[4],L.khatt[c[5]],c[6],c[7],c[9]].map(q).join(','));}
+    if(!e[11]) lines.push([e[0],e[1],e[2],e[3],L.subj[e[4]],L.lang[e[5]],e[7]].map(q).join(','));
+  }
+  const blob=new Blob(['\ufeff'+lines.join('\r\n')],{type:'text/csv;charset=utf-8'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='فنخا-نتائج.csv'; a.click();
+}
+
 // ---------- wiring
 let tmr=null;
 function later(){clearTimeout(tmr); tmr=setTimeout(()=>{ if($('mode').value!=='desc') run(); },300);}
@@ -335,19 +388,95 @@ function init(){
   $('f_city').addEventListener('change',()=>{refillLib();run();});
   ['f_subj','f_khatt'].forEach(id=>$(id).addEventListener('change',run));
   $('reset').onclick=()=>{$('q').value='';document.querySelectorAll('.grid input').forEach(x=>x.value='');document.querySelectorAll('.grid select').forEach(x=>x.selectedIndex=0);refillLib();$('mode').value='all';welcome();};
+  $('csv').onclick=csv;
   $('settings').onclick=()=>$('dlg').showModal();
   $('dlg_ok').onclick=()=>$('dlg').close();
   document.addEventListener('click',ev=>{const a=ev.target.closest('[data-go]'); if(a){ev.preventDefault();$('q').value=a.dataset.go;$('mode').value='title';run();}});
-  $('loading').remove(); welcome();
+  initIx(); $('loading').remove(); welcome();
+}
+// ---------- الفهارس (المجلدات 35–45)
+const HAS_PDF=false;
+const IXDEF=[['authors','المؤلفون (ج 35–36)',1],['subjects','الموضوعات (ج 37–38)',2],['influencers','المؤثّرون في التأليف (ج 38)',1],['waqifs','الواقفون والمُهدون (ج 38)',1],['languages','اللغات (ج 39–40)',1],['autographs','النسخ بخط المؤلف (ج 40)',1],['scribes','الكتّاب (النسّاخ) (ج 41–43)',2],['names','الأعلام (ج 44)',1],['place_authored','أماكن التأليف (ج 45)',1],['place_copied','أماكن النسخ (ج 45)',1],['places','الأماكن (ج 45)',1]];
+const IX={}, IXK={}, IXW={};
+window.FK_IX_LOAD=function(name,part,rows){ (IX[name]=IX[name]||[]).push([part,rows]); };
+function loadIx(name){return new Promise(async res=>{
+  const def=IXDEF.find(d=>d[0]===name); if(IXK[name]) return res();
+  for(let k=1;k<=def[2];k++){ await new Promise(r=>{const s=document.createElement('script'); s.src='data/ix_'+name+'_'+k+'.js'; s.onload=r; s.onerror=r; document.body.appendChild(s);}); }
+  const parts=(IX[name]||[]).sort((a,b)=>a[0]-b[0]); IX[name]=[].concat(...parts.map(p=>p[1]));
+  IXK[name]=IX[name].map(h=>norm(h[0]+' '+h[2])); res();});}
+let IXR=[], ixpage=0; const IXPER=60;
+async function ixRun(){
+  const name=$('ix_sel').value; $('ix_status').textContent='جارٍ تحميل الفهرس…';
+  await loadIx(name);
+  const H=IX[name], toks=tokens($('ix_q').value), all=$('ix_mode').value==='a';
+  IXR=[];
+  for(let i=0;i<H.length;i++){
+    if(!toks.length){IXR.push(i);continue;}
+    let key=IXK[name][i];
+    if(toks.every(t=>key.includes(t))){IXR.push(i);continue;}
+    if(all){ if(!IXW[name]) IXW[name]=H.map(h=>norm(h[1]+' '+h[4].map(it=>it[0]).join(' ')));
+      if(toks.every(t=>IXW[name][i].includes(t))) IXR.push(i); }
+  }
+  ixpage=0; ixRender();
+}
+function ixRender(){
+  const name=$('ix_sel').value, H=IX[name]; const R=$('ix_res'); R.innerHTML='';
+  const nItems=IXR.reduce((s,i)=>s+H[i][4].length,0);
+  $('ix_status').innerHTML=`<b>${IXR.length.toLocaleString('ar')}</b> رأساً، تحتها <b>${nItems.toLocaleString('ar')}</b> بنداً. اضغط على الرأس لعرض بنوده، وعلى «ج، ص» لفتح المدخل.`;
+  for(const i of IXR.slice(ixpage*IXPER,(ixpage+1)*IXPER)) R.appendChild(ixCard(name,i));
+  const P=$('ix_pager'); P.innerHTML=''; const pages=Math.ceil(IXR.length/IXPER);
+  if(pages>1){const b=(t,p,dis)=>{const x=document.createElement('button');x.textContent=t;x.disabled=dis;x.onclick=()=>{ixpage=p;ixRender();window.scrollTo(0,0);};P.appendChild(x);};
+    b('‹ السابقة',ixpage-1,ixpage===0); const s=document.createElement('span'); s.textContent=` صفحة ${ixpage+1} من ${pages} `; P.appendChild(s); b('التالية ›',ixpage+1,ixpage>=pages-1);}
+}
+function ixCard(name,i){
+  const h=IX[name][i]; const d=document.createElement('div'); d.className='ixh';
+  if(h[2]){ d.innerHTML=`<span>${esc(h[0])}</span> ← انظر: <a href="#" class="ixsee">${esc(h[2])}</a>`;
+    d.querySelector('.ixsee').onclick=ev=>{ev.preventDefault();$('ix_q').value=h[2];$('ix_mode').value='h';ixRun();}; return d; }
+  d.innerHTML=`<div class="row" style="justify-content:space-between"><span class="hn">${esc(h[0])}</span><span><span class="chip">${h[4].length} بنداً</span>${HAS_PDF?pdfLink(h[3],'PDF'):''}</span></div>${h[1]?`<div class="meta">${esc(h[1])}</div>`:''}<div class="its" hidden></div>`;
+  const box=d.querySelector('.its'); let shown=0;
+  const more=()=>{ const lim=Math.min(h[4].length,shown+200);
+    for(;shown<lim;shown++){ const it=h[4][shown]; const r=it[1]; let chips='';
+      for(let k=0;k<r.length;k+=3) chips+=`<span class="ref${r[k+2]>=0?' lk':''}" data-v="${r[k]}" data-p="${r[k+1]}" data-e="${r[k+2]}">ج ${r[k]}، ص ${r[k+1]}</span>`;
+      const showText = !(name==='names'||name==='places');
+      const div=document.createElement('div'); div.className='ixit'; div.innerHTML=(showText?esc(it[0])+' ':'')+chips; box.appendChild(div);}
+    const old=box.querySelector('.moreix'); if(old) old.remove();
+    if(shown<h[4].length){const b=document.createElement('button');b.className='moreix';b.textContent='المزيد ('+(h[4].length-shown)+')';b.onclick=more;box.appendChild(b);} };
+  d.querySelector('.hn').onclick=()=>{ if(box.hidden){ if(!shown) more(); box.hidden=false;} else box.hidden=true; };
+  return d;
+}
+function entriesAt(v,p){ // entries starting on page p, or the one running into it
+  const out=[]; let last=-1;
+  for(let i=0;i<E.length;i++){const e=E[i]; if(e[0]!==v) continue; if(e[1]<p) last=i; else if(e[1]===p) out.push(i); else break;}
+  if(last>=0) out.unshift(last); return out;
+}
+function showEntries(list,msg){
+  setTab('e'); RES=list; RESX=[]; copyMatch=null; page=0; render(); status(msg);
+  if(list.length===1){ const t=document.querySelector('.card .t'); if(t) t.click(); }
+}
+document.addEventListener('click',ev=>{const r=ev.target.closest('.ref'); if(!r) return;
+  const v=+r.dataset.v,p=+r.dataset.p,e=+r.dataset.e;
+  if(e>=0) showEntries([e],`المدخل المحال إليه: ج ${v}، ص ${p} — <a href="#" id="backix">رجوع إلى الفهرس</a>`);
+  else showEntries(entriesAt(v,p),`المداخل الواقعة في ج ${v}، ص ${p} (الإحالة إلى صفحة لا إلى عنوان) — <a href="#" id="backix">رجوع إلى الفهرس</a>`);
+  const b=document.getElementById('backix'); if(b) b.onclick=e2=>{e2.preventDefault(); setTab('i');};
+});
+function setTab(t){
+  const i=t==='i'; $('tab_i').classList.toggle('on',i); $('tab_e').classList.toggle('on',!i);
+  $('ixbar').hidden=!i; $('ixpanel').hidden=!i; $('ebar').hidden=i; $('fbox').hidden=i; $('epanel').hidden=i;
+  if(i && !IXR.length) ixRun();
+}
+function initIx(){
+  const s=$('ix_sel'); IXDEF.forEach(([k,l])=>{const o=document.createElement('option');o.value=k;o.textContent=l;s.appendChild(o);});
+  $('tab_e').onclick=()=>setTab('e'); $('tab_i').onclick=()=>setTab('i');
+  s.onchange=ixRun; $('ix_mode').onchange=ixRun;
+  let t=null; $('ix_q').addEventListener('input',()=>{clearTimeout(t);t=setTimeout(ixRun,350);});
 }
 function welcome(){
   RES=[];RESX=[];copyMatch=null;$('results').innerHTML='';$('xrefs').innerHTML='';$('pager').innerHTML='';
   const nC=C.length;
-  status(`<div class="stats"><span><b>${E.length.toLocaleString('ar')}</b> مدخلاً (عنواناً)</span><span><b>${nC.toLocaleString('ar')}</b> نسخة</span><span><b>${X.length.toLocaleString('ar')}</b> إحالة</span><span><b>34</b> مجلداً</span></div>
+  status(`<div class="stats"><span><b>${E.length.toLocaleString('ar')}</b> مدخلاً (عنواناً)</span><span><b>${nC.toLocaleString('ar')}</b> نسخة</span><span><b>${X.length.toLocaleString('ar')}</b> إحالة</span><span><b>34</b> مجلداً</span><span><b>11</b> فهرساً فنياً (ج 35–45)</span></div>
   <div class="hint">ابدأ بكتابة عنوان أو اسم مؤلف. اضغط على عنوان المدخل لعرض وصفه ونسخه، وبجانبه رقم المجلد والصفحة في المطبوع. لا فرق في البحث بين ي/ی ولا ك/ک ولا ة/ه، ولا بين الكلمات الملتصقة والمنفصلة.</div>`);
 }
 init();
 </script>
-</div>
-
-</body></html>
+</body>
+</html>
